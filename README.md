@@ -1,0 +1,2 @@
+# Frequency-Shift-Power-Dependant-Loads
+Arduino based load control that depends on frequency for off-grid AC coupled systems. As batteries get charged, solar or wind generation needed will decreasse, lowering the PV output or activating dump load of wind turbine. With this controller, you will be able to activate AC loads automatically so that power generation is not reduced. First prototype will increment power linearly starting at 50,5Hz and delivering full power at 51Hz through phase control
