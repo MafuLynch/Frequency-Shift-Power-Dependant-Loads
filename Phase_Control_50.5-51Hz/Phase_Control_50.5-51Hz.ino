@@ -67,8 +67,8 @@ void loop() {
     frequency = 16000000.0/(2*(8UL*value));
 
   if (detectado){  
-    if (frequency>50.49 && frequency <=51){
-      Fdelay=8800+(50.5-frequency)*2*8790;
+    if (frequency>=50.5 && frequency <51){
+      Fdelay=9500+(50.5-frequency)*2*9490;
       Tdelay=int(Fdelay);
       Serial.println(Tdelay);
       delayMicroseconds(Tdelay);
@@ -78,6 +78,12 @@ void loop() {
     }
     detectado=false;
   } 
+  if (frequency>=51){ //if frequency over 51Hz triac should be always on
+    digitalWrite(4,HIGH);
+  }
+  if (frequency<50.5){ //If low frequency, deactivate triac
+    digitalWrite(4,LOW)
+  }
 
   Serial.println(frequency);
   
