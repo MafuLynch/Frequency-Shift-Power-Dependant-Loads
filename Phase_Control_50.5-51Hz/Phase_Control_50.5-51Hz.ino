@@ -15,7 +15,7 @@ LiquidCrystal lcd(3, 4, 5, 6, 7, 8);
 int triacPin=3;
 float Fdelay;
 int Tdelay;
-bool detectado = false;
+int detectado = 0;
  
 void setup(void) {
 
@@ -27,6 +27,8 @@ void setup(void) {
   lcd.print("Peri =");
   pinMode(4,OUTPUT);
   digitalWrite(4,LOW);
+
+  
  
   // Timer1 module configuration
   TCCR1A = 0;
@@ -45,44 +47,47 @@ void timer1_get() {
   tmr1 = TCNT1;
   TCNT1  = 0;   // reset Timer1
   //Serial.println("interrupt");
-  detectado=true;
+  detectado=1;
+  //Serial.println(detectado);
+
 }
  
 ISR(TIMER1_OVF_vect) {  // Timer1 interrupt service routine (ISR)
   tmr1 = 0;
 }
  
-// main loop
+
 void loop() {
  
   // save current Timer1 value
   uint16_t value = tmr1;
-  // calculate signal period in milliseconds
-  // 8.0 is Timer1 prescaler and 16000 = MCU_CLK/1000
-  period = 8.0 * value/16000;
   // calculate signal frequency which is = 1/period ; or = MCU_CLK/(Prescaler * Timer_Value)
-  if(value == 0)
-    frequency = 0;   // aviod division by zero
-  else
-    frequency = 16000000.0/(2*(8UL*value));
+  //if(value == 0)
+    //frequency = 0;   // aviod division by zero
+  //else
+    //frequency = 16000000.0/(2*(8UL*value));
 
-  if (detectado){  
-    if (frequency>=50.5 && frequency <51){
-      Fdelay=9500+(50.5-frequency)*2*9490;
+  float pot = map(analogRead(A1),0,1024,500,520);
+  frequency = pot/10;
+
+  if (detectado==1){  
+    if (frequency>=50.50 && frequency <51){
+      Fdelay=9800*(1+(50.5-frequency)*2);
       Tdelay=int(Fdelay);
-      Serial.println(Tdelay);
+      //Serial.println(Tdelay);
       delayMicroseconds(Tdelay);
       digitalWrite(4,HIGH);
-      delayMicroseconds(100);
-      digitalWrite(4,LOW);
-    }
-    detectado=false;
-  } 
-  if (frequency>=51){ //if frequency over 51Hz triac should be always on
+      delayMicroseconds(50);   //revisar que es posible que este delay de 100uS este activando el triac en la siguiente onda a partir de t'=0. Tdelay + delay de codigo + delay 100uS = 9800+100+algo muy chico --> 9900uS + extra y la media onda en 50.5 son 9.9miliseg
+      digitalWrite(4,LOW);}
+    detectado=0;
+  }
+
+  if (frequency>=51.0){ //if frequency over 51Hz triac should be always on
     digitalWrite(4,HIGH);
   }
+
   if (frequency<50.5){ //If low frequency, deactivate triac
-    digitalWrite(4,LOW)
+    digitalWrite(4,LOW);
   }
 
   Serial.println(frequency);
@@ -91,4 +96,3 @@ void loop() {
  
 }
  
-// end of code.
