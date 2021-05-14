@@ -49,6 +49,15 @@ void timer1_get() {
   //Serial.println("interrupt");
   detectado=1;
   //Serial.println(detectado);
+    if (frequency>=50.50 && frequency <51){
+      Fdelay=9300*(1+(50.5-frequency)*2);
+      Tdelay=int(Fdelay);
+      //Serial.println(Tdelay);
+      delayMicroseconds(Tdelay);
+      digitalWrite(4,HIGH);
+      delayMicroseconds(100);   //revisar que es posible que este delay de 100uS este activando el triac en la siguiente onda a partir de t'=0. Tdelay + delay de codigo + delay 100uS = 9800+100+algo muy chico --> 9900uS + extra y la media onda en 50.5 son 9.9miliseg
+      digitalWrite(4,LOW);
+      }
 
 }
  
@@ -70,17 +79,10 @@ void loop() {
   float pot = map(analogRead(A1),0,1024,500,520);
   frequency = pot/10;
 
-  if (detectado==1){  
-    if (frequency>=50.50 && frequency <51){
-      Fdelay=9750*(1+(50.5-frequency)*2);
-      Tdelay=int(Fdelay);
-      //Serial.println(Tdelay);
-      delayMicroseconds(Tdelay);
-      digitalWrite(4,HIGH);
-      delayMicroseconds(50);   //revisar que es posible que este delay de 100uS este activando el triac en la siguiente onda a partir de t'=0. Tdelay + delay de codigo + delay 100uS = 9800+100+algo muy chico --> 9900uS + extra y la media onda en 50.5 son 9.9miliseg
-      digitalWrite(4,LOW);}
+  /*if (detectado==1){ 
+
     detectado=0;
-  }
+  }*/
 
   if (frequency>=51.0){ //if frequency over 51Hz triac should be always on
     digitalWrite(4,HIGH);
