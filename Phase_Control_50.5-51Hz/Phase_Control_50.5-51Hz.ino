@@ -72,7 +72,7 @@ void loop() {
 
   if (detectado==1){  
     if (frequency>=50.50 && frequency <51){
-      Fdelay=9800*(1+(50.5-frequency)*2);
+      Fdelay=9750*(1+(50.5-frequency)*2);
       Tdelay=int(Fdelay);
       //Serial.println(Tdelay);
       delayMicroseconds(Tdelay);
