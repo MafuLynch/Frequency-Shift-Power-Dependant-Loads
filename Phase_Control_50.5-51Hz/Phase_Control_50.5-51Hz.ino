@@ -55,7 +55,7 @@ void timer1_get() {
       //Serial.println(Tdelay);
       delayMicroseconds(Tdelay);
       digitalWrite(4,HIGH);
-      delayMicroseconds(100);   //revisar que es posible que este delay de 100uS este activando el triac en la siguiente onda a partir de t'=0. Tdelay + delay de codigo + delay 100uS = 9800+100+algo muy chico --> 9900uS + extra y la media onda en 50.5 son 9.9miliseg
+      delayMicroseconds(50);   //revisar que es posible que este delay de 100uS este activando el triac en la siguiente onda a partir de t'=0. Tdelay + delay de codigo + delay 100uS = 9800+100+algo muy chico --> 9900uS + extra y la media onda en 50.5 son 9.9miliseg
       digitalWrite(4,LOW);
       }
 
@@ -71,13 +71,14 @@ void loop() {
   // save current Timer1 value
   uint16_t value = tmr1;
   // calculate signal frequency which is = 1/period ; or = MCU_CLK/(Prescaler * Timer_Value)
-  //if(value == 0)
-    //frequency = 0;   // aviod division by zero
-  //else
-    //frequency = 16000000.0/(2*(8UL*value));
+  
+  /*if(value == 0)
+    frequency = 0;   // aviod division by zero
+  else
+    frequency = 16000000.0/(2*(8UL*value));*/
 
-  float pot = map(analogRead(A1),0,1024,500,520);
-  frequency = pot/10;
+  float pot = map(analogRead(A1),0,1024,5000,5200);
+  frequency = pot/100;
 
   /*if (detectado==1){ 
 
