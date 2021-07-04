@@ -1,32 +1,13 @@
-
-/*************************************************************************
- * 
- * Arduino frequency counter.
- * This is a free software with NO WARRANTY.
- * USE AT YOUR OWN RISK!
- * https://simple-circuit.com/
- *
- ************************************************************************/
- 
-#include <LiquidCrystal.h>    // include Arduino LCD library
- 
-// LCD module connections (RS, E, D4, D5, D6, D7)
-LiquidCrystal lcd(3, 4, 5, 6, 7, 8);
 int triacPin=3;
 float Fdelay;
 int Tdelay;
-int detectado = 0;
  
 void setup(void) {
 
-  Serial.begin(9600); 
-  lcd.begin(16, 2);      // set up the LCD's number of columns and rows
-  lcd.setCursor(0, 0);
-  lcd.print("Freq =");
-  lcd.setCursor(0, 1);
-  lcd.print("Peri =");
   pinMode(4,OUTPUT);
   digitalWrite(4,LOW);
+  pinMode(12,OUTPUT);
+  digitalWrite(12,LOW);
 
   
  
@@ -46,9 +27,6 @@ float period, frequency;
 void timer1_get() {
   tmr1 = TCNT1;
   TCNT1  = 0;   // reset Timer1
-  //Serial.println("interrupt");
-  detectado=1;
-  //Serial.println(detectado);
     if (frequency>=50.50 && frequency <51){
       Fdelay=9300*(1+(50.5-frequency)*2);
       Tdelay=int(Fdelay);
@@ -72,18 +50,6 @@ void loop() {
   uint16_t value = tmr1;
   // calculate signal frequency which is = 1/period ; or = MCU_CLK/(Prescaler * Timer_Value)
   
-  /*if(value == 0)
-    frequency = 0;   // aviod division by zero
-  else
-    frequency = 16000000.0/(2*(8UL*value));*/
-
-  float pot = map(analogRead(A1),0,1024,5000,5200);
-  frequency = pot/100;
-
-  /*if (detectado==1){ 
-
-    detectado=0;
-  }*/
 
   if (frequency>=51.0){ //if frequency over 51Hz triac should be always on
     digitalWrite(4,HIGH);
@@ -91,11 +57,12 @@ void loop() {
 
   if (frequency<50.5){ //If low frequency, deactivate triac
     digitalWrite(4,LOW);
+    digitalWrite(12,LOW);
   }
 
-  Serial.println(frequency);
-  
-  //delay(500);
+  if (frequency>50.65){
+    digitalWrite(12,HIGH);
+    }
  
 }
  
