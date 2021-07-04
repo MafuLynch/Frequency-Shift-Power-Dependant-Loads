@@ -60,7 +60,7 @@ void loop() {
     digitalWrite(12,LOW);
   }
 
-  if (frequency>50.65){
+  if (frequency>50.60){
     digitalWrite(12,HIGH);
     }
  
