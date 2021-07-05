@@ -28,9 +28,8 @@ void timer1_get() {
   tmr1 = TCNT1;
   TCNT1  = 0;   // reset Timer1
     if (frequency>=50.50 && frequency <51){
-      Fdelay=9300*(1+(50.5-frequency)*2);
+      Fdelay=9200*(1+(50.5-frequency)*2);  //linear interpolation for delay
       Tdelay=int(Fdelay);
-      //Serial.println(Tdelay);
       delayMicroseconds(Tdelay);
       digitalWrite(4,HIGH);
       delayMicroseconds(50);   //revisar que es posible que este delay de 100uS este activando el triac en la siguiente onda a partir de t'=0. Tdelay + delay de codigo + delay 100uS = 9800+100+algo muy chico --> 9900uS + extra y la media onda en 50.5 son 9.9miliseg
@@ -60,7 +59,7 @@ void loop() {
     digitalWrite(12,LOW);
   }
 
-  if (frequency>50.60){
+  if (frequency>50.60){ //Start fan when 20% output power
     digitalWrite(12,HIGH);
     }
  
