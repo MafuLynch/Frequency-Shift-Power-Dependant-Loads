@@ -18,7 +18,7 @@ void setup() {
   EIFR |= 1;  // clear INT0 flag
   
   pinMode(FAN_PIN,OUTPUT);                  // Set fan output pin
-  digitalWrite(FAN_PIN,HIGH);                // By default start off
+  digitalWrite(FAN_PIN,LOW);                // By default start off
   pinMode(2,INPUT_PULLUP);                  // Use internal pullup instead of external 10k ohm resistor
   attachInterrupt(0, timer1_get, FALLING);  // enable external interrupt (INT0)
 
