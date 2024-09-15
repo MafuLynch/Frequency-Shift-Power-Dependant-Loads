@@ -1,0 +1,217 @@
+{
+  "uuid": "f75e3edd9555f74b30bfc44bc8c2a8d7",
+  "path": "Offline/FSPDL_50.5-51Hz",
+  "name": "FSPDL_50.5-51Hz",
+  "content": "gerber for phase control board",
+  "created_at": "2021-05-08 18:31:27",
+  "updated_at": "2024-09-13 15:22:25",
+  "stick": "",
+  "documents": [
+    {
+      "uuid": "e6a51c7ee5ea99ce5e12e178a5678e2d",
+      "title": "Sheet_1",
+      "description": "",
+      "docType": "1",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "747eb179304d443eb9ccd38201faa513": 1,
+        "fee3186e847b42ecb0244c6d4d6aaef8": 1,
+        "9947c419a24244c8b7a183248e2ed461": 1,
+        "9a9bbb9525d945a6ad5c3225690f9e05": 1,
+        "1bb32ea09aad4dd08b41a0b586bdbf78": 2,
+        "4613c01aaa304f0fb9b1b75b7b1b175a": 1,
+        "a5f2046bac754c65aa8f2c43733fe94e": 2,
+        "4160acdcbf3c44b7857840e3de817f0d": 1,
+        "e33cc1be9d5e4d929dda60b4eb023d72": 1,
+        "b0248eb51e084227889f2cb84eab79c4": 1
+      },
+      "BOM": [
+        [
+          "Value",
+          "Quantity",
+          "Package",
+          "Components",
+          "CustomPara"
+        ],
+        [
+          "1N4007W",
+          1,
+          "SOD-123_L2.8-W1.8-LS3.7-RD",
+          "D1",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Supplier Part": "C328592",
+            "BOM_Manufacturer": "BLUE ROCKET",
+            "BOM_Manufacturer Part": "1N4007W",
+            "puuid": "60a676d313ae48718a81c380b73dfe4f",
+            "uuid": "e33cc1be9d5e4d929dda60b4eb023d72"
+          }
+        ],
+        [
+          "Arduino_Nano_Header",
+          1,
+          "DIP-30_L43.18-W15.24-ARDUINONANO",
+          "J1",
+          {
+            "BOM_Manufacturer Part": "",
+            "puuid": "0476c63fa99e4a998187e5a274bdf1f1",
+            "uuid": "fee3186e847b42ecb0244c6d4d6aaef8"
+          }
+        ],
+        [
+          "SSR Output 5V",
+          1,
+          "JST-2-PTH",
+          "J2",
+          {
+            "BOM_Manufacturer Part": "",
+            "puuid": "124cc01b59a54aa4ad28e5cf695658b3",
+            "uuid": "1bb32ea09aad4dd08b41a0b586bdbf78"
+          }
+        ],
+        [
+          "FAN",
+          1,
+          "JST-2-PTH",
+          "J3",
+          {
+            "BOM_Manufacturer Part": "",
+            "puuid": "124cc01b59a54aa4ad28e5cf695658b3",
+            "uuid": "1bb32ea09aad4dd08b41a0b586bdbf78"
+          }
+        ],
+        [
+          "Spade Terminal 6.3",
+          2,
+          "CONNECTOR-SPADE-6.3MM",
+          "P1,P2",
+          {
+            "BOM_Manufacturer": "Keystone",
+            "BOM_Manufacturer Part": "1287",
+            "BOM_Supplier": "LCSC",
+            "BOM_Supplier Part": "C238078",
+            "puuid": "eced8398494d444982e865f3fd9b10cd",
+            "uuid": "a5f2046bac754c65aa8f2c43733fe94e"
+          }
+        ],
+        [
+          "2N2222A",
+          1,
+          "TO-92-3_L4.8-W3.7-P2.54-R",
+          "Q1",
+          {
+            "BOM_Manufacturer Part": "",
+            "puuid": "d759540c89844d9986051022192fcef6",
+            "uuid": "4160acdcbf3c44b7857840e3de817f0d"
+          }
+        ],
+        [
+          "68k",
+          1,
+          "1W 68K",
+          "R1",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Supplier Part": "C119513",
+            "BOM_Manufacturer": "Chian Chia Elec",
+            "BOM_Manufacturer Part": "-",
+            "puuid": "7d31ae4e20df4192ac2402c876645935",
+            "uuid": "4613c01aaa304f0fb9b1b75b7b1b175a"
+          }
+        ],
+        [
+          "1k",
+          1,
+          "R0603",
+          "R2",
+          {
+            "BOM_Supplier Part": "",
+            "BOM_Supplier": "",
+            "BOM_Manufacturer Part": "",
+            "puuid": "398691f1f785460098bbe5ee6590333c",
+            "uuid": "b0248eb51e084227889f2cb84eab79c4"
+          }
+        ],
+        [
+          "PC817C-CU-DH",
+          1,
+          "DIP-4_L4.6-W6.5-P2.54-LS7.6-BL",
+          "U1",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Supplier Part": "C427589",
+            "BOM_Manufacturer": "Nanjing Micro One Elec",
+            "BOM_Manufacturer Part": "PC817C-CU-DH",
+            "puuid": "676ed9aa62ba492188ecf261ad3b0389",
+            "uuid": "747eb179304d443eb9ccd38201faa513"
+          }
+        ],
+        [
+          "DB157-BP",
+          1,
+          "DB_L8.3-W6.4-P5.10-LS7.6",
+          "U2",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Supplier Part": "C2975492",
+            "BOM_Manufacturer": "MCC(美微科)",
+            "BOM_Manufacturer Part": "DB157-BP",
+            "puuid": "c3e08048fa944a2580f56fbdabef177a",
+            "uuid": "9947c419a24244c8b7a183248e2ed461"
+          }
+        ],
+        [
+          "HLK-5M12",
+          1,
+          "PWRM-TH_HLK-5M12",
+          "U3",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Supplier Part": "C209908",
+            "BOM_Manufacturer": "HI-LINK",
+            "BOM_Manufacturer Part": "HLK-5M12",
+            "BOM_JLCPCB Part Class": "Extended Part",
+            "puuid": "751b2674297e4997b3a8b3bacd76bedf",
+            "uuid": "9a9bbb9525d945a6ad5c3225690f9e05"
+          }
+        ]
+      ],
+      "updateTime": 1726251745,
+      "createTime": 1620509723,
+      "histories": [],
+      "created_at": "2021-05-08 18:35:23",
+      "updated_at": "2024-09-13 15:22:25"
+    },
+    {
+      "uuid": "344e2ab947487f63bf9a8e6a9dd8b3eb",
+      "puuid": "f75e3edd9555f74b30bfc44bc8c2a8d7",
+      "title": "PCB_FSPDL_50.5-51Hz",
+      "filename": "PCB_FSPDL_50.5-51Hz.json",
+      "description": "",
+      "docType": "3",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "124cc01b59a54aa4ad28e5cf695658b3": 1,
+        "eced8398494d444982e865f3fd9b10cd": 2,
+        "7d31ae4e20df4192ac2402c876645935": 1,
+        "c3e08048fa944a2580f56fbdabef177a": 1,
+        "751b2674297e4997b3a8b3bacd76bedf": 1,
+        "676ed9aa62ba492188ecf261ad3b0389": 1,
+        "0476c63fa99e4a998187e5a274bdf1f1": 1
+      },
+      "BOM": [],
+      "updateTime": 1650822790,
+      "createTime": 1620514187,
+      "histories": [],
+      "created_at": "2021-05-08 19:49:47",
+      "updated_at": "2022-04-24 14:53:10"
+    }
+  ],
+  "sort": [],
+  "title": "FSPDL_50.5-51Hz",
+  "foldername": "FSPDL_50.5-51Hz",
+  "schfilename": "FSPDL_50.5-51Hz.json",
+  "schfilemtime": 1726251745638
+}
